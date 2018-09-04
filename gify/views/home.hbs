@@ -1,0 +1,14 @@
+<h1>Search for GIFS</h1>
+
+<div class="container-search">
+  <form>
+    <input type="text", name="term">
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+<section class="gifs-section">
+  {{#each gifs}}
+    <img src="{{this.images.fixed_height.url}}">
+  {{/each}}
+</section>
