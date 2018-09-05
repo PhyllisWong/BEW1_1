@@ -1,30 +1,18 @@
 const express = require('express');
 const app = express();
 const Review = require('../models/review.js');
-const Comment = require('../models/comment.js');
+// const Comment = require('../models/comment.js');
 
 // INDEX: Show all reviews
 app.get('/', (req, res) => {
   Review.find()
     .then(reviews => {
-      // console.log(reviews);
       res.render('reviews/reviews-index', { reviews: reviews });
     })
     .catch(err => {
       console.log(`Error: ${err.message}`);
     });
 });
-
-// app.get('/reviews', (req, res) => {
-//   // find reviews
-//   Review.find({})
-//     .then(reviews => {
-//     res.render('reviews/reviews-index', { reviews });
-//   })
-//     .catch(err => {
-//       console.log(`Error: ${err.message}`);
-//     });
-// });
 
 
 // SHOW: Show one review
@@ -39,10 +27,11 @@ app.get('/reviews/:id', (req, res) => {
 
 
 // CREATE
-app.get('/reviews/new', (req, res) => {
+app.get('/review/new', (req, res) => {
   console.log('You clicked new review');
   res.render('reviews/reviews-new', {});
 });
+
 
 app.post('/reviews', (req, res) => {
   Review.create(req.body).then((review) => {
@@ -57,9 +46,8 @@ app.post('/reviews', (req, res) => {
 
 // Edit
 app.get('/reviews/:id/edit', (req, res) => {
-  console.log("in the edit function")
   Review.findById(req.params.id, (err, review) => {
-    res.render('reviews-edit', {review: review});
+    res.render('reviews/reviews-edit', {review: review});
   })
 });
 

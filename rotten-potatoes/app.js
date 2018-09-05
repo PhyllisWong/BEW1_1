@@ -34,6 +34,7 @@ app.use('/', reviewsController);
 //   res.render('error/index.hbs');
 // })
 
+
 //******************   NEW WAY    ********************//
 // Mongoose Connection
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/rotten-potatoes';
